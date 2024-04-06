@@ -21,10 +21,22 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.anonymous.appmoviligmar"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "b297d138-d174-4be7-b6fd-3f1ed4272b73"
+      }
     }
-  }
+  },
+  "updates": {
+    "requestHeaders": {
+      "expo-channel-name": "main"
+    }
+  },
+  "runtimeVersion": "1.0.0"
 }
