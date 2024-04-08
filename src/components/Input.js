@@ -56,20 +56,23 @@ export default function Input() {
   const handleSendCode = () => {
     console.log("Enviando código", code);
     const config = {
-      headers: {
-        "Access-Control-Allow-Origin": "http://192.0.2.7/24",
-      },
     };
-
-    const URL = "http://192.0.2.6/api/cabezera";
+    const URL = "http://192.0.2.6:8080/api/code/mobile";
     axios
-      .get(URL, { code }, config)
+      .post(URL, { code }, config)
       .then((response) => {
-        setNewCode(response);
+        setNewCode(response.data.message);
       })
       .catch((error) => {
-        console.error(error);
-        setNewCode("Hubo un error", error);
+        // Manejar los errores aquí
+          setNewCode(JSON.stringify(error));
+        if(error.response.status === 401){
+          setNewCode('Codigo incorrecto');    
+        }else if(error.response.status === 500){
+          setNewCode('Error en el servidor');
+        }else{
+          setNewCode(JSON.stringify(error));
+        }
       });
   };
 
