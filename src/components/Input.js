@@ -57,9 +57,9 @@ export default function Input() {
     console.log("Enviando código", code);
     const config = {
     };
-    const URL = "http://192.0.2.6:8080/api/code/mobile";
+    const URL = "http://192.0.2.6:80/api/code/mobile";
     axios
-      .post(URL, { code }, config)
+      .post(URL, { code: code.replace("-",'').replace("-",'') }, config)
       .then((response) => {
         setNewCode(response.data.message);
       })
