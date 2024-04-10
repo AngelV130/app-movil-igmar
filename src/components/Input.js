@@ -71,7 +71,8 @@ export default function Input() {
         }else if(error.response.status === 500){
           setNewCode('Error en el servidor');
         }else{
-          setNewCode(JSON.stringify(error));
+          console.error(JSON.stringify(error));
+          setNewCode('Error en el servidor');
         }
       });
   };
